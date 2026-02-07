@@ -3,175 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Special One - Kratika</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Sagar's Love Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --rose-red: #d90429;
-            --soft-pink: #ffccd5;
-            --gold: #f9d423;
-        }
-
         body {
             margin: 0;
-            background: #0a0a0a;
-            overflow: hidden;
+            padding: 0;
+            background: #0f0c29;
+            background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
             font-family: 'Poppins', sans-serif;
-            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
+            color: white;
+            overflow: hidden;
         }
 
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(217,4,41,0.25) 0%, rgba(0,0,0,0.9) 100%);
-            z-index: 1;
-        }
-
-        .card {
-            position: relative;
-            z-index: 10;
-            width: 340px;
-            padding: 45px 30px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+        .container {
             text-align: center;
-            box-shadow: 0 0 40px rgba(217, 4, 41, 0.5);
-            transform-style: preserve-3d;
-            transition: transform 0.1s;
+            z-index: 10;
         }
 
         h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3.8rem;
-            color: var(--soft-pink);
-            margin: 10px 0;
-            text-shadow: 0 0 15px var(--rose-red);
-        }
-
-        .shayari {
             font-family: 'Dancing Script', cursive;
-            font-size: 1.5rem;
-            color: #fff;
-            margin: 25px 0;
-            line-height: 1.6;
-            min-height: 80px;
-            transition: opacity 0.8s ease;
+            font-size: 3.5rem;
+            margin-bottom: 40px;
+            text-shadow: 0 0 20px rgba(255, 77, 109, 0.5);
         }
 
-        #music-player { display: none; }
+        .links-wrapper {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-        .btn-play {
-            background: linear-gradient(45deg, var(--rose-red), #ef233c);
+        .portal-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 20px;
+            width: 150px;
+            text-decoration: none;
             color: white;
-            border: none;
-            padding: 14px 35px;
-            border-radius: 50px;
-            font-size: 1.1rem;
+            transition: 0.4s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .portal-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            background: rgba(255, 77, 109, 0.2);
+            border-color: #ff4d6d;
+        }
+
+        .portal-card i {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .portal-card span {
             font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(217, 4, 41, 0.4);
-            transition: 0.3s;
-            text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .btn-play:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(217, 4, 41, 0.6);
-        }
-
-        .floating-rose {
+        /* Particle Background */
+        #particles {
             position: absolute;
-            z-index: 5;
-            pointer-events: none;
-            animation: float 7s linear forwards;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(110vh) rotate(0deg) scale(0.5); opacity: 0; }
-            20% { opacity: 0.8; scale: 1; }
-            100% { transform: translateY(-20vh) rotate(720deg) scale(1.5); opacity: 0; }
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
         }
     </style>
 </head>
 <body>
 
-    <div class="overlay"></div>
+    <canvas id="particles"></canvas>
 
-    <iframe id="music-player" 
-            src="https://www.youtube.com/embed/45uEy0i8RS4?autoplay=1&loop=1&playlist=45uEy0i8RS4&enablejsapi=1" 
-            allow="autoplay">
-    </iframe>
-
-    <div class="card" id="card">
-        <div style="font-size: 90px; filter: drop-shadow(0 0 15px var(--rose-red));">🌹</div>
-        <h1>Happy Rose Day, Kratika!</h1>
-        <div class="shayari" id="shayari-text">Waiting for your smile...</div>
-        
-        <div class="controls">
-            <button class="btn-play" onclick="startExperience()">Open Your Surprise ❤️</button>
-        </div>
+    <div class="container">
+        <h1>Valentine's Week Specials</h1>
     </div>
 
     <script>
-        const shayaris = [
-            "Gulab ki khushbu bhi kam lagti hai...",
-            "Jab Kratika mere kareeb hoti hai.",
-            "Ye Rose Day toh sirf ek bahana hai...",
-            "Asal mein har din tere naam batana hai.",
-            "Muskurati raho tum hamesha aise hi...",
-            "Jaise khilta hai gulab bahaaro mein."
-        ];
+        // Simple Particle System
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-        let index = 0;
-        function rotateShayari() {
-            const textEl = document.getElementById('shayari-text');
-            textEl.style.opacity = 0;
-            setTimeout(() => {
-                textEl.innerText = shayaris[index];
-                textEl.style.opacity = 1;
-                index = (index + 1) % shayaris.length;
-            }, 800);
+        let particlesArray = [];
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.size > 0.2) this.size -= 0.01;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(255,255,255,0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
         }
 
-        function createRose() {
-            const rose = document.createElement('div');
-            rose.className = 'floating-rose';
-            const icons = ['🌹', '❤️', '🌸', '✨'];
-            rose.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-            rose.style.left = Math.random() * 100 + 'vw';
-            rose.style.fontSize = Math.random() * 25 + 20 + 'px';
-            rose.style.animationDuration = Math.random() * 4 + 6 + 's';
-            document.body.appendChild(rose);
-            setTimeout(() => rose.remove(), 9000);
+        function init() {
+            for (let i = 0; i < 100; i++) {
+                particlesArray.push(new Particle());
+            }
         }
-
-        function startExperience() {
-            const player = document.getElementById('music-player');
-            player.src += "&mute=0"; 
-            
-            document.querySelector('.btn-play').style.display = 'none';
-            setInterval(rotateShayari, 4500);
-            setInterval(createRose, 350);
-            rotateShayari();
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+                if (particlesArray[i].size <= 0.3) {
+                    particlesArray.splice(i, 1);
+                    i--;
+                    particlesArray.push(new Particle());
+                }
+            }
+            requestAnimationFrame(animate);
         }
-
-        // 3D Tilt Effect
-        document.addEventListener('mousemove', (e) => {
-            const card = document.getElementById('card');
-            let xAxis = (window.innerWidth / 2 - e.pageX) / 20;
-            let yAxis = (window.innerHeight / 2 - e.pageY) / 20;
-            card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-        });
+        init();
+        animate();
     </script>
 </body>
 </html>
