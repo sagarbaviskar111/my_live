@@ -3,120 +3,110 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Teddy Day Siya 🧸</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Pacifico&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<title>Teddy Day 🧸</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
 <style>
-:root {
-    --pink:#ff85a1;
-    --brown:#9c6644;
-    --bg:#a2d2ff;
-}
 
 body{
-    margin:0;
-    background:var(--bg);
-    font-family:Poppins,sans-serif;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
-    overflow:hidden;
+margin:0;
+font-family:Poppins;
+background:linear-gradient(135deg,#ffd6e0,#cdb4db,#a2d2ff);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
 }
 
-/* clouds */
-.cloud{
-    position:absolute;
-    background:#fff;
-    width:160px;
-    height:50px;
-    border-radius:50px;
-    opacity:.8;
-    animation:cloudMove 25s linear infinite;
-}
-@keyframes cloudMove{
-    from{left:-200px}
-    to{left:100vw}
-}
-
-/* card */
+/* 3D floating card */
 .card{
-    width:90%;
-    max-width:340px;
-    background:#fff;
-    padding:30px 20px;
-    border-radius:35px;
-    text-align:center;
-    box-shadow:0 15px 40px rgba(0,0,0,.15);
-    z-index:10;
+width:90%;
+max-width:350px;
+padding:30px;
+border-radius:35px;
+background:rgba(255,255,255,0.25);
+backdrop-filter:blur(15px);
+box-shadow:0 20px 50px rgba(0,0,0,0.2);
+text-align:center;
+animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-12px)}
 }
 
 h1{
-    font-family:'Fredoka One',cursive;
-    color:var(--brown);
-    margin:10px 0;
+font-family:'Fredoka One';
+color:#9c6644;
+margin:5px 0;
 }
 
-.from-to{
-    font-family:'Pacifico',cursive;
-    color:var(--pink);
-    font-size:1.2rem;
+.teddy{
+font-size:90px;
+animation:bounce 2s infinite;
 }
 
-.quotes{
-    min-height:110px;
-    font-size:1.05rem;
-    font-weight:600;
-    color:#6d597a;
-    transition:.5s;
+@keyframes bounce{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-15px)}
 }
 
-.btn{
-    margin-top:15px;
-    background:var(--pink);
-    color:#fff;
-    border:none;
-    padding:14px 32px;
-    border-radius:30px;
-    font-size:1.1rem;
-    font-weight:700;
-    cursor:pointer;
-    box-shadow:0 5px 15px rgba(255,133,161,.4);
+.quote{
+min-height:100px;
+font-weight:600;
+color:#6d597a;
+transition:0.4s;
 }
 
-/* falling emojis */
+button{
+background:#ff85a1;
+border:none;
+padding:15px 30px;
+border-radius:30px;
+font-size:18px;
+color:white;
+cursor:pointer;
+box-shadow:0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* falling emoji */
 .emoji{
-    position:absolute;
-    animation:fall linear forwards;
-    pointer-events:none;
+position:absolute;
+animation:fall linear forwards;
+pointer-events:none;
 }
+
 @keyframes fall{
-    0%{transform:translateY(-10vh);opacity:0}
-    20%{opacity:1}
-    100%{transform:translateY(110vh);opacity:0}
+0%{transform:translateY(-10vh);opacity:0}
+20%{opacity:1}
+100%{transform:translateY(110vh);opacity:0}
 }
 
 #player{display:none}
+
 </style>
 </head>
 
 <body>
 
-<div class="cloud" style="top:10%"></div>
-<div class="cloud" style="top:40%;animation-delay:-8s;width:200px"></div>
-<div class="cloud" style="top:70%;animation-delay:-15s"></div>
-
 <div class="card">
-    <div class="from-to">From Rishabh to Siya ❤️</div>
-    <div style="font-size:85px">🧸</div>
-    <h1>Happy Teddy Day</h1>
 
-    <div class="quotes" id="quote">
-        Hug the teddy to unlock magic 💖
-    </div>
+<div style="color:#ff85a1;font-weight:600;">From Rishabh to Siya ❤️</div>
 
-    <button class="btn" onclick="startMagic()">Hug the Teddy 🧸</button>
+<div class="teddy">🧸</div>
+
+<h1>Happy Teddy Day</h1>
+
+<div class="quote" id="quote">
+Press hug to unlock love 💕
+</div>
+
+<button onclick="startMagic()">Hug Teddy 🧸</button>
+
 </div>
 
 <div id="player"></div>
@@ -124,53 +114,67 @@ h1{
 <script src="https://www.youtube.com/iframe_api"></script>
 
 <script>
+
 let player;
+let ready = false;
 
 function onYouTubeIframeAPIReady(){
-    player=new YT.Player('player',{
-        height:'0',
-        width:'0',
-        videoId:'75o1iC1OSrE',
-        playerVars:{loop:1,playlist:'75o1iC1OSrE'}
-    });
+player = new YT.Player('player',{
+height:'0',
+width:'0',
+videoId:'75o1iC1OSrE',
+events:{
+'onReady':()=> ready=true
+}
+});
 }
 
 const quotes=[
- "Siya, tum meri hamesha wali teddy ho 🧸",
- "Teddy sirf bahana hai, pyaar toh Siya se hai ❤️",
- "Aaj ek nahi hazaar hugs tumhare liye 🤗",
- "Happy Teddy Day meri cutie Siya 💕"
+"Siya tum meri favourite teddy ho 🧸",
+"Rishabh ka dil sirf Siya ke liye ❤️",
+"Tumhari smile meri duniya hai 😊",
+"Happy Teddy Day meri jaan 💕"
 ];
 
-let i=0;
+let q=0;
+
 function changeQuote(){
-    const q=document.getElementById("quote");
-    q.style.opacity=0;
-    setTimeout(()=>{
-        q.innerText=quotes[i];
-        q.style.opacity=1;
-        i=(i+1)%quotes.length;
-    },400);
+const el=document.getElementById("quote");
+el.style.opacity=0;
+
+setTimeout(()=>{
+el.innerText=quotes[q];
+el.style.opacity=1;
+q=(q+1)%quotes.length;
+},300);
 }
 
-function dropEmoji(){
-    const e=document.createElement("div");
-    e.className="emoji";
-    e.innerText=["🧸","❤️","🎀","☁️"][Math.floor(Math.random()*4)];
-    e.style.left=Math.random()*100+"vw";
-    e.style.fontSize=20+Math.random()*20+"px";
-    e.style.animationDuration=4+Math.random()*3+"s";
-    document.body.appendChild(e);
-    setTimeout(()=>e.remove(),7000);
+function rain(){
+const e=document.createElement("div");
+e.className="emoji";
+e.innerText=["🧸","❤️","✨","🎀"][Math.floor(Math.random()*4)];
+e.style.left=Math.random()*100+"vw";
+e.style.fontSize=(20+Math.random()*20)+"px";
+e.style.animationDuration=(4+Math.random()*3)+"s";
+document.body.appendChild(e);
+setTimeout(()=>e.remove(),7000);
 }
 
 function startMagic(){
-    player.playVideo();              // ✅ SONG PLAYS
-    document.querySelector(".btn").style.display="none";
-    changeQuote();
-    setInterval(changeQuote,4000);
-    setInterval(dropEmoji,300);
+
+if(ready){
+player.unMute();
+player.playVideo();
 }
+
+document.querySelector("button").style.display="none";
+
+changeQuote();
+setInterval(changeQuote,4000);
+setInterval(rain,300);
+
+}
+
 </script>
 
 </body>
