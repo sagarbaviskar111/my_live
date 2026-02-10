@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Sakshi ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <title>Happy Teddy Day Siya! 🧸</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Pacifico&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --sakshi-pink: #ff0054;
-            --sakshi-purple: #7000ff;
+            --teddy-brown: #9c6644;
+            --soft-blue: #a2d2ff;
+            --light-cream: #fefae0;
         }
 
         body {
             margin: 0;
-            background: #050505;
+            background: var(--soft-blue);
             overflow: hidden;
             font-family: 'Poppins', sans-serif;
             display: flex;
@@ -22,141 +23,151 @@
             min-height: 100vh;
         }
 
-        /* Animated Glowing Background */
-        .bg-glow {
+        /* Floating Clouds Background */
+        .cloud {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(112, 0, 255, 0.2) 0%, #000 70%);
+            background: white;
+            width: 150px;
+            height: 50px;
+            border-radius: 50px;
+            opacity: 0.8;
+            animation: moveClouds 20s linear infinite;
             z-index: 1;
+        }
+
+        @keyframes moveClouds {
+            from { left: -200px; }
+            to { left: 100vw; }
         }
 
         .card {
             position: relative;
             z-index: 10;
-            width: 320px;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(25px);
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 330px;
+            padding: 40px 25px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 40px;
             text-align: center;
-            box-shadow: 0 0 50px rgba(112, 0, 255, 0.3);
-            animation: pulse 2s infinite ease-in-out;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 50px rgba(112, 0, 255, 0.3); }
-            50% { transform: scale(1.02); box-shadow: 0 0 70px rgba(255, 0, 84, 0.4); }
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border: 5px solid white;
         }
 
         h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3.5rem;
-            background: linear-gradient(to right, #ff0054, #7000ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-family: 'Fredoka One', cursive;
+            color: var(--teddy-brown);
+            font-size: 2.5rem;
             margin: 10px 0;
         }
 
-        .shayari {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.6rem;
-            color: #eee;
-            margin: 20px 0;
-            line-height: 1.4;
+        .from-to {
+            font-family: 'Pacifico', cursive;
+            color: #ff85a1;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .quotes-container {
+            font-size: 1.1rem;
+            color: #6d597a;
+            line-height: 1.6;
+            min-height: 100px;
+            font-weight: 600;
         }
 
         #music-player { display: none; }
 
-        .btn-sakshi {
-            background: linear-gradient(45deg, #ff0054, #7000ff);
+        .btn-siya {
+            background: #ff85a1;
             color: white;
             border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-weight: 600;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 10px 20px rgba(255, 0, 84, 0.4);
+            box-shadow: 0 5px 15px rgba(255, 133, 161, 0.4);
             transition: 0.3s;
         }
 
-        /* Floating Neon Hearts */
-        .heart {
+        .btn-siya:hover { transform: scale(1.1); }
+
+        /* Falling Teddy/Hearts Animation */
+        .teddy-emoji {
             position: absolute;
-            pointer-events: none;
             z-index: 5;
-            animation: move linear forwards;
-            filter: drop-shadow(0 0 5px currentColor);
+            pointer-events: none;
+            animation: fall linear forwards;
         }
 
-        @keyframes move {
-            0% { transform: translateY(110vh) scale(0); opacity: 0; }
-            20% { opacity: 1; scale: 1; }
-            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-glow"></div>
+    <div class="cloud" style="top: 10%; animation-delay: 0s;"></div>
+    <div class="cloud" style="top: 30%; animation-delay: -5s; width: 200px;"></div>
+    <div class="cloud" style="top: 60%; animation-delay: -10s;"></div>
 
     <iframe id="music-player" 
-            src="https://youtu.be/NUo8CKI34o4?si=qCX8_K6VM8CFmAN_" 
+            src="https://youtu.be/75o1iC1OSrE?si=Lg1LhyEYvez25R9e" 
             allow="autoplay">
     </iframe>
 
     <div class="card">
-        <div style="font-size: 70px; margin-bottom: 10px;">💖</div>
-        <h1>For Sakshi</h1>
-        <div class="shayari" id="text">Sakshi, your presence makes everything better...</div>
+        <div class="from-to">From Rishabh to Siya ❤️</div>
+        <div style="font-size: 90px; margin-bottom: 10px;">🧸</div>
+        <h1>Happy Teddy Day!</h1>
         
-        <div class="controls">
-            <button class="btn-sakshi" onclick="startExperience()">See the Magic ✨</button>
+        <div class="quotes-container" id="quote-box">
+            Click the button to see how much Rishabh loves you!
         </div>
+        
+        <button class="btn-siya" onclick="startSiyaMagic()">Hug the Teddy 🧸</button>
     </div>
 
     <script>
-        const lines = [
-            "Sakshi, tera chehra ek khila hua gulab hai...",
-            "Meri har dua ka tu hi ek jawab hai.",
-            "Bas tum hamesha mere saath rehna...",
-            "Kyunki tum hi ho, ab tum hi ho."
+        const quotes = [
+            "Siya, you are my permanent Teddy Bear whom I want to hug forever!",
+            "Teddy toh bas ek bahana hai, Rishabh ko toh Siya ke saath waqt bitana hai.",
+            "Sending you a big virtual hug because you're the cutest!",
+            "May your life be as soft and sweet as a Teddy Bear. Happy Teddy Day, Siya!"
         ];
 
-        let i = 0;
-        function changeText() {
-            const el = document.getElementById('text');
+        let qIdx = 0;
+        function changeQuote() {
+            const el = document.getElementById('quote-box');
             el.style.opacity = 0;
             setTimeout(() => {
-                el.innerText = lines[i];
+                el.innerText = quotes[qIdx];
                 el.style.opacity = 1;
-                i = (i + 1) % lines.length;
+                qIdx = (qIdx + 1) % quotes.length;
             }, 600);
         }
 
-        function createHeart() {
-            const h = document.createElement('div');
-            h.className = 'heart';
-            const colors = ['#ff0054', '#7000ff', '#ffbd00'];
-            h.style.color = colors[Math.floor(Math.random() * colors.length)];
-            h.innerHTML = '❤️';
-            h.style.left = Math.random() * 100 + 'vw';
-            h.style.fontSize = Math.random() * 20 + 20 + 'px';
-            h.style.animationDuration = Math.random() * 2 + 4 + 's';
-            document.body.appendChild(h);
-            setTimeout(() => h.remove(), 6000);
+        function createTeddy() {
+            const t = document.createElement('div');
+            t.className = 'teddy-emoji';
+            const icons = ['🧸', '❤️', '☁️', '🎀'];
+            t.innerText = icons[Math.floor(Math.random() * icons.length)];
+            t.style.left = Math.random() * 100 + 'vw';
+            t.style.fontSize = Math.random() * 20 + 20 + 'px';
+            t.style.animationDuration = Math.random() * 3 + 4 + 's';
+            document.body.appendChild(t);
+            setTimeout(() => t.remove(), 7000);
         }
 
-        function startExperience() {
+        function startSiyaMagic() {
             const player = document.getElementById('music-player');
             player.src += "&mute=0"; 
-            document.querySelector('.btn-sakshi').style.display = 'none';
-            setInterval(changeText, 4000);
-            setInterval(createHeart, 300);
-            changeText();
+            document.querySelector('.btn-siya').style.display = 'none';
+            setInterval(changeQuote, 4500);
+            setInterval(createTeddy, 300);
+            changeQuote();
         }
     </script>
 </body>
 </html>
-
