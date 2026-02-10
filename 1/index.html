@@ -4,15 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Teddy Day 🧸</title>
+<title>Teddy Day Love Page 🧸</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
 <style>
 
+/* ===== BODY ===== */
 body{
 margin:0;
-font-family:Poppins;
+font-family:Poppins,sans-serif;
 background:linear-gradient(135deg,#ffd6e0,#cdb4db,#a2d2ff);
 height:100vh;
 display:flex;
@@ -21,59 +22,64 @@ align-items:center;
 overflow:hidden;
 }
 
-/* 3D floating card */
+/* ===== FLOATING CARD ===== */
 .card{
 width:90%;
-max-width:350px;
-padding:30px;
-border-radius:35px;
-background:rgba(255,255,255,0.25);
+max-width:370px;
+padding:28px;
+border-radius:40px;
+background:rgba(255,255,255,0.35);
 backdrop-filter:blur(15px);
-box-shadow:0 20px 50px rgba(0,0,0,0.2);
+box-shadow:0 20px 55px rgba(0,0,0,0.18);
 text-align:center;
-animation:float 4s ease-in-out infinite;
+animation:cardFloat 4s ease-in-out infinite;
 }
 
-@keyframes float{
-0%,100%{transform:translateY(0)}
+@keyframes cardFloat{
+0%,100%{transform:translateY(0px)}
 50%{transform:translateY(-12px)}
 }
 
 h1{
-font-family:'Fredoka One';
+font-family:'Fredoka One',cursive;
 color:#9c6644;
-margin:5px 0;
+margin:10px 0 5px;
 }
 
 .teddy{
-font-size:90px;
-animation:bounce 2s infinite;
+font-size:96px;
+animation:heartBeat 1.9s infinite;
 }
 
-@keyframes bounce{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-15px)}
+@keyframes heartBeat{
+0%,100%{transform:scale(1)}
+50%{transform:scale(1.15)}
 }
 
-.quote{
-min-height:100px;
+/* ===== QUOTE ===== */
+.quoteBox{
+min-height:120px;
+font-size:1.04rem;
 font-weight:600;
 color:#6d597a;
+padding:0 7px;
 transition:0.4s;
 }
 
+/* ===== BUTTON ===== */
 button{
 background:#ff85a1;
 border:none;
-padding:15px 30px;
+padding:15px 32px;
 border-radius:30px;
 font-size:18px;
 color:white;
 cursor:pointer;
-box-shadow:0 6px 20px rgba(0,0,0,0.2);
+margin-top:12px;
+box-shadow:0 6px 23px rgba(0,0,0,0.24);
 }
 
-/* falling emoji */
+/* ===== FALLING EMOJIS ===== */
 .emoji{
 position:absolute;
 animation:fall linear forwards;
@@ -81,12 +87,13 @@ pointer-events:none;
 }
 
 @keyframes fall{
-0%{transform:translateY(-10vh);opacity:0}
+0%{transform:translateY(-12vh) rotate(0deg);opacity:0}
 20%{opacity:1}
-100%{transform:translateY(110vh);opacity:0}
+100%{transform:translateY(110vh) rotate(360deg);opacity:0}
 }
 
-#player{display:none}
+/* hide player */
+#player{display:none;}
 
 </style>
 </head>
@@ -101,9 +108,7 @@ pointer-events:none;
 
 <h1>Happy Teddy Day</h1>
 
-<div class="quote" id="quote">
-Press hug to unlock love 💕
-</div>
+<div class="quoteBox" id="quote">Press hug to unlock magic 💕</div>
 
 <button onclick="startMagic()">Hug Teddy 🧸</button>
 
@@ -111,67 +116,91 @@ Press hug to unlock love 💕
 
 <div id="player"></div>
 
+<!-- YT Iframe API -->
 <script src="https://www.youtube.com/iframe_api"></script>
 
 <script>
 
-let player;
-let ready = false;
+// ===== YT PLAYER SETUP =====
+let player, isReady=false;
 
 function onYouTubeIframeAPIReady(){
-player = new YT.Player('player',{
-height:'0',
-width:'0',
-videoId:'75o1iC1OSrE',
+player=new YT.Player('player',{
+height:'0',width:'0',
+videoId:'Cb6wuzOurPc',
 events:{
-'onReady':()=> ready=true
+'onReady':()=>isReady=true
+},
+playerVars:{
+loop:1,playlist:'Cb6wuzOurPc'
 }
 });
 }
 
+// ===== QUOTES =====
 const quotes=[
-"Siya tum meri favourite teddy ho 🧸",
-"Rishabh ka dil sirf Siya ke liye ❤️",
-"Tumhari smile meri duniya hai 😊",
-"Happy Teddy Day meri jaan 💕"
+"Siya tum meri life ki sweetest teddy ho 🧸",
+"Rishabh ka dil sirf Siya ke naam ❤️",
+"Teri smile meri duniya ko glow karti 😊",
+"Har din tumhare saath meri favourite 💕"
 ];
 
-let q=0;
+let current=0;
 
 function changeQuote(){
 const el=document.getElementById("quote");
 el.style.opacity=0;
 
 setTimeout(()=>{
-el.innerText=quotes[q];
+el.innerText=quotes[current];
 el.style.opacity=1;
-q=(q+1)%quotes.length;
+current=(current+1)%quotes.length;
 },300);
 }
 
+// ===== FALLING EMOJIS =====
 function rain(){
 const e=document.createElement("div");
 e.className="emoji";
 e.innerText=["🧸","❤️","✨","🎀"][Math.floor(Math.random()*4)];
 e.style.left=Math.random()*100+"vw";
-e.style.fontSize=(20+Math.random()*20)+"px";
+e.style.fontSize=(22+Math.random()*22)+"px";
 e.style.animationDuration=(4+Math.random()*3)+"s";
 document.body.appendChild(e);
-setTimeout(()=>e.remove(),7000);
+setTimeout(()=>e.remove(),7200);
 }
 
+// ===== START MAGIC =====
 function startMagic(){
 
-if(ready){
-player.unMute();
-player.playVideo();
+// mobile vibration
+if(navigator.vibrate){
+navigator.vibrate([200,100,200]);
 }
 
+// disable button
 document.querySelector("button").style.display="none";
 
+// play music after ready
+if(isReady){
+player.unMute();
+
+// smooth fade-in volume
+let vol=0;
+player.setVolume(0);
+player.playVideo();
+
+let fadeIn=setInterval(()=>{
+vol+=8;
+if(vol>=100){vol=100;clearInterval(fadeIn);}
+player.setVolume(vol);
+},250);
+}
+
+// animations
 changeQuote();
 setInterval(changeQuote,4000);
-setInterval(rain,300);
+setInterval(rain,280);
 
 }
 
