@@ -1,234 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Hug Day Siya! 🤗</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --warm-glow: #fcd5ce;
+            --deep-hug: #faedcd;
+            --text-brown: #6d597a;
+        }
 
-<title>For Pallavi ❤️</title>
+        body {
+            margin: 0;
+            background: #f8edeb;
+            overflow: hidden;
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+        /* Pulsing Heart Background */
+        .heart-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,181,167,0.3) 0%, rgba(248,237,235,1) 70%);
+            z-index: 1;
+        }
 
-<style>
+        .card {
+            position: relative;
+            z-index: 10;
+            width: 320px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            border: 3px solid white;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            animation: breathe 4s infinite ease-in-out;
+        }
 
-/* ===== Romantic Night Background ===== */
-body{
-margin:0;
-font-family:Poppins;
-background:radial-gradient(circle at top,#2b2d42,#121420);
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
-color:white;
-}
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
 
-/* ===== Floating Stars ===== */
-.star{
-position:absolute;
-width:3px;
-height:3px;
-background:white;
-border-radius:50%;
-animation:twinkle 2s infinite alternate;
-}
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #d62828;
+            margin: 10px 0;
+        }
 
-@keyframes twinkle{
-from{opacity:0.3}
-to{opacity:1}
-}
+        .from-to {
+            color: #e5989b;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
 
-/* ===== Glass Card ===== */
-.card{
-width:90%;
-max-width:380px;
-padding:30px;
-border-radius:40px;
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(18px);
-box-shadow:0 0 40px rgba(255,100,150,0.2);
-text-align:center;
-animation:float 4s ease-in-out infinite;
-}
+        .hug-message {
+            font-size: 1.2rem;
+            color: var(--text-brown);
+            margin: 20px 0;
+            min-height: 80px;
+            line-height: 1.5;
+        }
 
-@keyframes float{
-50%{transform:translateY(-10px)}
-}
+        #music-player { display: none; }
 
-/* ===== Name Glow ===== */
-.name{
-font-family:Pacifico;
-font-size:2.2rem;
-color:#ffb3c6;
-text-shadow:0 0 10px pink,0 0 30px hotpink;
-animation:glow 2s infinite alternate;
-}
+        .btn-hug {
+            background: #ffb4a2;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(255, 180, 162, 0.3);
+            transition: 0.3s;
+        }
 
-@keyframes glow{
-from{text-shadow:0 0 10px pink}
-to{text-shadow:0 0 25px hotpink}
-}
+        /* Falling Hug Icons */
+        .icon {
+            position: absolute;
+            pointer-events: none;
+            z-index: 5;
+            animation: fall linear forwards;
+        }
 
-/* Teddy */
-.teddy{
-font-size:90px;
-animation:bounce 2s infinite;
-}
-
-@keyframes bounce{
-50%{transform:scale(1.15)}
-}
-
-/* Love Letter */
-.message{
-min-height:130px;
-margin-top:10px;
-font-size:1.05rem;
-font-weight:500;
-color:#ffe5ec;
-}
-
-/* Button */
-button{
-margin-top:15px;
-padding:15px 35px;
-border:none;
-border-radius:30px;
-background:#ff4d6d;
-color:white;
-font-size:18px;
-cursor:pointer;
-box-shadow:0 0 20px #ff4d6d;
-}
-
-/* Falling Hearts */
-.heart{
-position:absolute;
-animation:fall linear forwards;
-}
-
-@keyframes fall{
-0%{transform:translateY(-10vh);opacity:0}
-20%{opacity:1}
-100%{transform:translateY(110vh);opacity:0}
-}
-
-#player{display:none;}
-
-</style>
+        @keyframes fall {
+            0% { transform: translateY(-10vh) scale(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="card">
+    <div class="heart-bg"></div>
 
-<div style="font-size:14px;color:#ffd6e0;">Specially Made For</div>
+    <iframe id="music-player" 
+            src="https://www.youtube.com/embed/S_Y7A2m2Lio?autoplay=1&loop=1&playlist=S_Y7A2m2Lio&enablejsapi=1" 
+            allow="autoplay">
+    </iframe>
 
-<div class="name">Pallavi ❤️</div>
+    <div class="card">
+        <div class="from-to">Rishabh 🫂 Siya</div>
+        <div style="font-size: 80px;">🫂</div>
+        <h1>Happy Hug Day!</h1>
+        
+        <div class="hug-message" id="msg-box">
+            A hug is a handshake from the heart.
+        </div>
+        
+        <button class="btn-hug" onclick="startHug()">Send a Virtual Hug 🤗</button>
+    </div>
 
-<div class="teddy">🧸</div>
+    <script>
+        const quotes = [
+            "Siya, your hug is my favorite place in the world.",
+            "Sending you a warm hug to let you know how much I love you.",
+            "Rishabh may be far, but this hug is always for you.",
+            "No matter where I go, your arms are my home."
+        ];
 
-<div class="message" id="loveText">
-Tap teddy to see Sagar's heart 💖
-</div>
+        let i = 0;
+        function rotateMsg() {
+            const el = document.getElementById('msg-box');
+            el.style.opacity = 0;
+            setTimeout(() => {
+                el.innerText = quotes[i];
+                el.style.opacity = 1;
+                i = (i + 1) % quotes.length;
+            }, 500);
+        }
 
-<button onclick="startLove()">Touch Teddy 🧸</button>
+        function createIcon() {
+            const icon = document.createElement('div');
+            icon.className = 'icon';
+            const emojis = ['🫂', '❤️', '🌸', '✨'];
+            icon.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            icon.style.left = Math.random() * 100 + 'vw';
+            icon.style.fontSize = Math.random() * 20 + 20 + 'px';
+            icon.style.animationDuration = Math.random() * 3 + 5 + 's';
+            document.body.appendChild(icon);
+            setTimeout(() => icon.remove(), 8000);
+        }
 
-</div>
-
-<div id="player"></div>
-
-<script src="https://www.youtube.com/iframe_api"></script>
-
-<script>
-
-/* ===== Create Stars ===== */
-for(let i=0;i<60;i++){
-let star=document.createElement("div");
-star.className="star";
-star.style.left=Math.random()*100+"vw";
-star.style.top=Math.random()*100+"vh";
-star.style.animationDelay=Math.random()*2+"s";
-document.body.appendChild(star);
-}
-
-/* ===== YOUTUBE PLAYER ===== */
-let player, ready=false;
-
-function onYouTubeIframeAPIReady(){
-player=new YT.Player('player',{
-height:'0',
-width:'0',
-videoId:'Cb6wuzOurPc',
-playerVars:{loop:1,playlist:'Cb6wuzOurPc'},
-events:{
-'onReady':()=>ready=true
-}
-});
-}
-
-/* ===== Falling Hearts ===== */
-function rainHearts(){
-let h=document.createElement("div");
-h.className="heart";
-h.innerText=["❤️","💖","💕","🧸"][Math.floor(Math.random()*4)];
-h.style.left=Math.random()*100+"vw";
-h.style.fontSize=(20+Math.random()*20)+"px";
-h.style.animationDuration=(4+Math.random()*3)+"s";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),7000);
-}
-
-/* ===== Typing Love Message ===== */
-function typeLove(){
-
-let msg="Pallavi ❤️\n\nTum meri life ka sabse beautiful part ho...\nTumhari smile meri duniya ko light karti hai...\nMain hamesha tumhe hug karna chahta hu teddy ki tarah 🧸\n\nI Love You 💕";
-
-let i=0;
-let box=document.getElementById("loveText");
-box.innerHTML="";
-
-let typing=setInterval(()=>{
-box.innerHTML+=msg[i]=="\n"?"<br>":msg[i];
-i++;
-if(i>=msg.length) clearInterval(typing);
-},45);
-}
-
-/* ===== Start Love Magic ===== */
-function startLove(){
-
-// vibration
-if(navigator.vibrate){
-navigator.vibrate([200,100,200]);
-}
-
-// hide button
-document.querySelector("button").style.display="none";
-
-// play music fade-in
-if(ready){
-player.unMute();
-player.setVolume(0);
-player.playVideo();
-
-let v=0;
-let fade=setInterval(()=>{
-v+=10;
-player.setVolume(v);
-if(v>=100) clearInterval(fade);
-},250);
-}
-
-// hearts rain
-setInterval(rainHearts,250);
-
-// typing message
-typeLove();
-
-}
-
-</script>
-
+        function startHug() {
+            const player = document.getElementById('music-player');
+            player.src += "&mute=0"; 
+            document.querySelector('.btn-hug').style.display = 'none';
+            setInterval(rotateMsg, 4000);
+            setInterval(createIcon, 350);
+            rotateMsg();
+        }
+    </script>
 </body>
 </html>
