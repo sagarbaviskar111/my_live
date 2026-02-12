@@ -1,210 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Hug Day Siya! 🤗</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --warm-glow: #fcd5ce;
+            --deep-hug: #faedcd;
+            --text-brown: #6d597a;
+        }
 
-<title>Teddy Day Love Page 🧸</title>
+        body {
+            margin: 0;
+            background: #f8edeb;
+            overflow: hidden;
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+        /* Pulsing Heart Background */
+        .heart-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,181,167,0.3) 0%, rgba(248,237,235,1) 70%);
+            z-index: 1;
+        }
 
-<style>
+        .card {
+            position: relative;
+            z-index: 10;
+            width: 320px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            border: 3px solid white;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            animation: breathe 4s infinite ease-in-out;
+        }
 
-/* ===== BODY ===== */
-body{
-margin:0;
-font-family:Poppins,sans-serif;
-background:linear-gradient(135deg,#ffd6e0,#cdb4db,#a2d2ff);
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
-}
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
 
-/* ===== FLOATING CARD ===== */
-.card{
-width:90%;
-max-width:370px;
-padding:28px;
-border-radius:40px;
-background:rgba(255,255,255,0.35);
-backdrop-filter:blur(15px);
-box-shadow:0 20px 55px rgba(0,0,0,0.18);
-text-align:center;
-animation:cardFloat 4s ease-in-out infinite;
-}
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #d62828;
+            margin: 10px 0;
+        }
 
-@keyframes cardFloat{
-0%,100%{transform:translateY(0px)}
-50%{transform:translateY(-12px)}
-}
+        .from-to {
+            color: #e5989b;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
 
-h1{
-font-family:'Fredoka One',cursive;
-color:#9c6644;
-margin:10px 0 5px;
-}
+        .hug-message {
+            font-size: 1.2rem;
+            color: var(--text-brown);
+            margin: 20px 0;
+            min-height: 80px;
+            line-height: 1.5;
+        }
 
-.teddy{
-font-size:96px;
-animation:heartBeat 1.9s infinite;
-}
+        #music-player { display: none; }
 
-@keyframes heartBeat{
-0%,100%{transform:scale(1)}
-50%{transform:scale(1.15)}
-}
+        .btn-hug {
+            background: #ffb4a2;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(255, 180, 162, 0.3);
+            transition: 0.3s;
+        }
 
-/* ===== QUOTE ===== */
-.quoteBox{
-min-height:120px;
-font-size:1.04rem;
-font-weight:600;
-color:#6d597a;
-padding:0 7px;
-transition:0.4s;
-}
+        /* Falling Hug Icons */
+        .icon {
+            position: absolute;
+            pointer-events: none;
+            z-index: 5;
+            animation: fall linear forwards;
+        }
 
-/* ===== BUTTON ===== */
-button{
-background:#ff85a1;
-border:none;
-padding:15px 32px;
-border-radius:30px;
-font-size:18px;
-color:white;
-cursor:pointer;
-margin-top:12px;
-box-shadow:0 6px 23px rgba(0,0,0,0.24);
-}
-
-/* ===== FALLING EMOJIS ===== */
-.emoji{
-position:absolute;
-animation:fall linear forwards;
-pointer-events:none;
-}
-
-@keyframes fall{
-0%{transform:translateY(-12vh) rotate(0deg);opacity:0}
-20%{opacity:1}
-100%{transform:translateY(110vh) rotate(360deg);opacity:0}
-}
-
-/* hide player */
-#player{display:none;}
-
-</style>
+        @keyframes fall {
+            0% { transform: translateY(-10vh) scale(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="card">
+    <div class="heart-bg"></div>
 
-<div style="color:#ff85a1;font-weight:600;">From Rishabh to Siya ❤️</div>
+    <iframe id="music-player" 
+            src="https://www.youtube.com/embed/S_Y7A2m2Lio?autoplay=1&loop=1&playlist=S_Y7A2m2Lio&enablejsapi=1" 
+            allow="autoplay">
+    </iframe>
 
-<div class="teddy">🧸</div>
+    <div class="card">
+        <div class="from-to">Rishabh 🫂 Siya</div>
+        <div style="font-size: 80px;">🫂</div>
+        <h1>Happy Hug Day!</h1>
+        
+        <div class="hug-message" id="msg-box">
+            A hug is a handshake from the heart.
+        </div>
+        
+        <button class="btn-hug" onclick="startHug()">Send a Virtual Hug 🤗</button>
+    </div>
 
-<h1>Happy Teddy Day</h1>
+    <script>
+        const quotes = [
+            "Siya, your hug is my favorite place in the world.",
+            "Sending you a warm hug to let you know how much I love you.",
+            "Rishabh may be far, but this hug is always for you.",
+            "No matter where I go, your arms are my home."
+        ];
 
-<div class="quoteBox" id="quote">Press hug to unlock magic 💕</div>
+        let i = 0;
+        function rotateMsg() {
+            const el = document.getElementById('msg-box');
+            el.style.opacity = 0;
+            setTimeout(() => {
+                el.innerText = quotes[i];
+                el.style.opacity = 1;
+                i = (i + 1) % quotes.length;
+            }, 500);
+        }
 
-<button onclick="startMagic()">Hug Teddy 🧸</button>
+        function createIcon() {
+            const icon = document.createElement('div');
+            icon.className = 'icon';
+            const emojis = ['🫂', '❤️', '🌸', '✨'];
+            icon.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            icon.style.left = Math.random() * 100 + 'vw';
+            icon.style.fontSize = Math.random() * 20 + 20 + 'px';
+            icon.style.animationDuration = Math.random() * 3 + 5 + 's';
+            document.body.appendChild(icon);
+            setTimeout(() => icon.remove(), 8000);
+        }
 
-</div>
-
-<div id="player"></div>
-
-<!-- YT Iframe API -->
-<script src="https://www.youtube.com/iframe_api"></script>
-
-<script>
-
-// ===== YT PLAYER SETUP =====
-let player, isReady=false;
-
-function onYouTubeIframeAPIReady(){
-player=new YT.Player('player',{
-height:'0',width:'0',
-videoId:'Cb6wuzOurPc',
-events:{
-'onReady':()=>isReady=true
-},
-playerVars:{
-loop:1,playlist:'Cb6wuzOurPc'
-}
-});
-}
-
-// ===== QUOTES =====
-const quotes=[
-"Siya tum meri life ki sweetest teddy ho 🧸",
-"Rishabh ka dil sirf Siya ke naam ❤️",
-"Teri smile meri duniya ko glow karti 😊",
-"Har din tumhare saath meri favourite 💕"
-];
-
-let current=0;
-
-function changeQuote(){
-const el=document.getElementById("quote");
-el.style.opacity=0;
-
-setTimeout(()=>{
-el.innerText=quotes[current];
-el.style.opacity=1;
-current=(current+1)%quotes.length;
-},300);
-}
-
-// ===== FALLING EMOJIS =====
-function rain(){
-const e=document.createElement("div");
-e.className="emoji";
-e.innerText=["🧸","❤️","✨","🎀"][Math.floor(Math.random()*4)];
-e.style.left=Math.random()*100+"vw";
-e.style.fontSize=(22+Math.random()*22)+"px";
-e.style.animationDuration=(4+Math.random()*3)+"s";
-document.body.appendChild(e);
-setTimeout(()=>e.remove(),7200);
-}
-
-// ===== START MAGIC =====
-function startMagic(){
-
-// mobile vibration
-if(navigator.vibrate){
-navigator.vibrate([200,100,200]);
-}
-
-// disable button
-document.querySelector("button").style.display="none";
-
-// play music after ready
-if(isReady){
-player.unMute();
-
-// smooth fade-in volume
-let vol=0;
-player.setVolume(0);
-player.playVideo();
-
-let fadeIn=setInterval(()=>{
-vol+=8;
-if(vol>=100){vol=100;clearInterval(fadeIn);}
-player.setVolume(vol);
-},250);
-}
-
-// animations
-changeQuote();
-setInterval(changeQuote,4000);
-setInterval(rain,280);
-
-}
-
-</script>
-
+        function startHug() {
+            const player = document.getElementById('music-player');
+            player.src += "&mute=0"; 
+            document.querySelector('.btn-hug').style.display = 'none';
+            setInterval(rotateMsg, 4000);
+            setInterval(createIcon, 350);
+            rotateMsg();
+        }
+    </script>
 </body>
 </html>
